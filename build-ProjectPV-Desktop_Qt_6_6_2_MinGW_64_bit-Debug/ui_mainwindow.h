@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 
@@ -22,6 +23,7 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
+    QPushButton *etudiant_pushButton;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -29,13 +31,16 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(800, 600);
+        MainWindow->resize(835, 514);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
+        etudiant_pushButton = new QPushButton(centralwidget);
+        etudiant_pushButton->setObjectName("etudiant_pushButton");
+        etudiant_pushButton->setGeometry(QRect(100, 110, 83, 29));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 800, 25));
+        menubar->setGeometry(QRect(0, 0, 835, 25));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
@@ -49,6 +54,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        etudiant_pushButton->setText(QCoreApplication::translate("MainWindow", "Students", nullptr));
     } // retranslateUi
 
 };
