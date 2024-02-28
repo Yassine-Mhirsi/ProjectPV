@@ -9,6 +9,7 @@ Welcome::Welcome(QWidget *parent)
     , ui(new Ui::Welcome)
 {
     ui->setupUi(this);
+    show();
     QPixmap pic("E:/documents/cpp/QtProjectPV/p/ProjectPV/assets/logopi.png");
     ui->Pi->setPixmap(pic);
     setWindowTitle("Grade managment");

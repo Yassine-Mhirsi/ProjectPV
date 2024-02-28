@@ -6,7 +6,7 @@ DatabaseManager::DatabaseManager()
 {
     // Initialize your database connection here
     m_database = QSqlDatabase::addDatabase("QSQLITE");
-    m_database.setDatabaseName("your_database_name.sqlite");
+    m_database.setDatabaseName("example.sqlite");
 
     if (!m_database.open()) {
         qDebug() << "Error: connection with database failed";

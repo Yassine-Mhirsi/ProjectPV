@@ -12,9 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -24,8 +22,8 @@ class Ui_MainWindow
 public:
     QWidget *centralwidget;
     QPushButton *etudiant_pushButton;
-    QMenuBar *menubar;
-    QStatusBar *statusbar;
+    QPushButton *pushButton;
+    QPushButton *matiere_pushButton;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -37,14 +35,13 @@ public:
         etudiant_pushButton = new QPushButton(centralwidget);
         etudiant_pushButton->setObjectName("etudiant_pushButton");
         etudiant_pushButton->setGeometry(QRect(100, 110, 83, 29));
+        pushButton = new QPushButton(centralwidget);
+        pushButton->setObjectName("pushButton");
+        pushButton->setGeometry(QRect(220, 270, 80, 24));
+        matiere_pushButton = new QPushButton(centralwidget);
+        matiere_pushButton->setObjectName("matiere_pushButton");
+        matiere_pushButton->setGeometry(QRect(400, 210, 80, 24));
         MainWindow->setCentralWidget(centralwidget);
-        menubar = new QMenuBar(MainWindow);
-        menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 835, 25));
-        MainWindow->setMenuBar(menubar);
-        statusbar = new QStatusBar(MainWindow);
-        statusbar->setObjectName("statusbar");
-        MainWindow->setStatusBar(statusbar);
 
         retranslateUi(MainWindow);
 
@@ -55,6 +52,8 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         etudiant_pushButton->setText(QCoreApplication::translate("MainWindow", "Students", nullptr));
+        pushButton->setText(QCoreApplication::translate("MainWindow", "Prof", nullptr));
+        matiere_pushButton->setText(QCoreApplication::translate("MainWindow", "Matiere", nullptr));
     } // retranslateUi
 
 };

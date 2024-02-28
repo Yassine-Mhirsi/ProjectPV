@@ -12,20 +12,37 @@ CONFIG += c++17
 
 SOURCES += \
     database/databasemanager.cpp \
+    enseignant/enseignant.cpp \
     etudiant/etudiant.cpp \
+    groupe/groupe.cpp \
+    groupemodule/groupemodule.cpp \
     main.cpp \
     mainwindow\mainwindow.cpp \
+    matiere/matiere.cpp \
+    note/note.cpp \
+    personne/personne.cpp \
     welcome/welcome.cpp
 
 HEADERS += \
     database/databasemanager.h \
+    enseignant/enseignant.h \
     etudiant/etudiant.h \
+    groupe/groupe.h \
+    groupemodule/groupemodule.h \
     mainwindow\mainwindow.h \
+    matiere/matiere.h \
+    note/note.h \
+    personne/personne.h \
     welcome/welcome.h
 
 FORMS += \
+    enseignant/enseignant.ui \
     etudiant/etudiant.ui \
+    groupe/groupe.ui \
+    groupemodule/groupemodule.ui \
     mainwindow\mainwindow.ui \
+    matiere/matiere.ui \
+    note/note.ui \
     welcome/welcome.ui
 
 # Default rules for deployment.
