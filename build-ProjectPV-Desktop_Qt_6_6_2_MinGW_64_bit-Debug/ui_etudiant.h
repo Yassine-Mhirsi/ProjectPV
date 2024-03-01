@@ -63,6 +63,12 @@ public:
 
         name_lineEdit = new QLineEdit(etudiant);
         name_lineEdit->setObjectName("name_lineEdit");
+        name_lineEdit->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    border-radius: 10px; /* Adjust the value to change the roundness */\n"
+"    padding: 5px; /* Adjust the padding as needed */\n"
+"    border: 1px solid #555555; /* Optional: add a border */\n"
+"}\n"
+""));
 
         verticalLayout_2->addWidget(name_lineEdit);
 
@@ -73,6 +79,12 @@ public:
 
         lastname_lineEdit = new QLineEdit(etudiant);
         lastname_lineEdit->setObjectName("lastname_lineEdit");
+        lastname_lineEdit->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    border-radius: 10px; /* Adjust the value to change the roundness */\n"
+"    padding: 5px; /* Adjust the padding as needed */\n"
+"    border: 1px solid #555555; /* Optional: add a border */\n"
+"}\n"
+""));
 
         verticalLayout_2->addWidget(lastname_lineEdit);
 
@@ -83,6 +95,12 @@ public:
 
         mail_lineEdit = new QLineEdit(etudiant);
         mail_lineEdit->setObjectName("mail_lineEdit");
+        mail_lineEdit->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    border-radius: 10px; /* Adjust the value to change the roundness */\n"
+"    padding: 5px; /* Adjust the padding as needed */\n"
+"    border: 1px solid #555555; /* Optional: add a border */\n"
+"}\n"
+""));
 
         verticalLayout_2->addWidget(mail_lineEdit);
 
@@ -93,6 +111,12 @@ public:
 
         numinsc_lineEdit = new QLineEdit(etudiant);
         numinsc_lineEdit->setObjectName("numinsc_lineEdit");
+        numinsc_lineEdit->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    border-radius: 10px; /* Adjust the value to change the roundness */\n"
+"    padding: 5px; /* Adjust the padding as needed */\n"
+"    border: 1px solid #555555; /* Optional: add a border */\n"
+"}\n"
+""));
 
         verticalLayout_2->addWidget(numinsc_lineEdit);
 
@@ -114,6 +138,12 @@ public:
 
         searchbar = new QLineEdit(etudiant);
         searchbar->setObjectName("searchbar");
+        searchbar->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    border-radius: 10px; /* Adjust the value to change the roundness */\n"
+"    padding: 5px; /* Adjust the padding as needed */\n"
+"    border: 1px solid #555555; /* Optional: add a border */\n"
+"}\n"
+""));
 
         verticalLayout_3->addWidget(searchbar);
 

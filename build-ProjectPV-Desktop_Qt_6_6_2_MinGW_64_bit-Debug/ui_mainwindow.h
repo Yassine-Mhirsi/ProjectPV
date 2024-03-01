@@ -24,6 +24,8 @@ public:
     QPushButton *etudiant_pushButton;
     QPushButton *pushButton;
     QPushButton *matiere_pushButton;
+    QPushButton *gm_pushButton;
+    QPushButton *grp_pushButton;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -41,6 +43,12 @@ public:
         matiere_pushButton = new QPushButton(centralwidget);
         matiere_pushButton->setObjectName("matiere_pushButton");
         matiere_pushButton->setGeometry(QRect(400, 210, 80, 24));
+        gm_pushButton = new QPushButton(centralwidget);
+        gm_pushButton->setObjectName("gm_pushButton");
+        gm_pushButton->setGeometry(QRect(430, 90, 101, 24));
+        grp_pushButton = new QPushButton(centralwidget);
+        grp_pushButton->setObjectName("grp_pushButton");
+        grp_pushButton->setGeometry(QRect(430, 330, 83, 29));
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);
@@ -54,6 +62,8 @@ public:
         etudiant_pushButton->setText(QCoreApplication::translate("MainWindow", "Students", nullptr));
         pushButton->setText(QCoreApplication::translate("MainWindow", "Prof", nullptr));
         matiere_pushButton->setText(QCoreApplication::translate("MainWindow", "Matiere", nullptr));
+        gm_pushButton->setText(QCoreApplication::translate("MainWindow", "groupemodule", nullptr));
+        grp_pushButton->setText(QCoreApplication::translate("MainWindow", "Groupe", nullptr));
     } // retranslateUi
 
 };

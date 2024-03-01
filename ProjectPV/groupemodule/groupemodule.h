@@ -19,6 +19,15 @@ public:
     ~groupemodule();
     friend ostream& operator<<(ostream& os, const groupemodule& gm);
     string getIdGM() const {return IdGM;}
+    void PopulateMatiere();
+    void addGm();
+    void displayselectedmat(const QModelIndex &index);
+    void PopulateGM();
+    void showMat();
+    void PopulateLM();
+    void deleteGm();
+    void displaySelectedGm(const QModelIndex &index);
+    void ToListeMat(const QModelIndex &index);
 private:
     string IdGM;
     string NomGM;
@@ -28,3 +37,5 @@ private:
 };
 
 #endif // GROUPEMODULE_H
+
+

@@ -9,6 +9,8 @@
 #include <QDebug>
 #include <QMessageBox>
 #include "./matiere/matiere.h"
+#include "./groupemodule/groupemodule.h"
+#include"./groupe/groupe.h"
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -21,6 +23,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->etudiant_pushButton,&QPushButton::clicked,this,&MainWindow::on_etudiant_pushButton_clicked);
     connect(ui->pushButton,&QPushButton::clicked,this,&MainWindow::on_pushButton_clicked);
     connect(ui->matiere_pushButton,&QPushButton::clicked,this,&MainWindow::on_pushButton_2_clicked);
+    connect(ui->gm_pushButton,&QPushButton::clicked,this,&MainWindow::on_gm_pushButton_clicked);
+
 
 
 }
@@ -47,5 +51,19 @@ void MainWindow::on_pushButton_2_clicked()
 {
     matiere *mat = new matiere();
     mat->show();
+}
+
+
+void MainWindow::on_gm_pushButton_clicked()
+{
+    groupemodule *gm = new groupemodule();
+    gm->show();
+}
+
+
+void MainWindow::on_grp_pushButton_clicked()
+{
+    groupe *g = new groupe();
+    g->show();
 }
 

@@ -6,13 +6,310 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>896</width>
+    <height>829</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <widget class="QPushButton" name="showgm_pushButton">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>110</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>show GM</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="showetu_pushButton">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>200</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>show Etu</string>
+   </property>
+  </widget>
+  <widget class="QTableView" name="gm_tableView">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>60</y>
+     <width>256</width>
+     <height>192</height>
+    </rect>
+   </property>
+   <attribute name="verticalHeaderVisible">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QTableView" name="etu_tableView">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>330</y>
+     <width>256</width>
+     <height>192</height>
+    </rect>
+   </property>
+   <attribute name="verticalHeaderVisible">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QTableView" name="grp_tableView">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>330</y>
+     <width>441</width>
+     <height>192</height>
+    </rect>
+   </property>
+   <attribute name="verticalHeaderVisible">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QPushButton" name="addgm_pushButton">
+   <property name="geometry">
+    <rect>
+     <x>720</x>
+     <y>260</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>add</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="addetu_pushButton">
+   <property name="geometry">
+    <rect>
+     <x>720</x>
+     <y>530</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>add</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>80</y>
+     <width>221</width>
+     <height>180</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>IdGRP</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="idGRP_lineEdit"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>Niveau</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="niv_comboBox">
+        <item>
+         <property name="text">
+          <string>Select...</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>1ere</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>2eme</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>3eme</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>4eme</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>5eme</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Diplôme</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="dip_comboBox">
+        <item>
+         <property name="text">
+          <string>Select...</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>ING</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Master</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>LMD</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Spécialité</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="spec_comboBox">
+        <item>
+         <property name="text">
+          <string>Select...</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>INF</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>INDUS</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>MATH</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Num_G</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="numg_comboBox">
+        <item>
+         <property name="text">
+          <string>Select...</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>2</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>3</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QTableView" name="LG_tableView">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>600</y>
+     <width>256</width>
+     <height>192</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="idgm_lineEdit">
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>260</y>
+     <width>113</width>
+     <height>28</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="idetu_lineEdit">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>530</y>
+     <width>113</width>
+     <height>28</height>
+    </rect>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

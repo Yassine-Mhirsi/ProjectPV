@@ -120,6 +120,9 @@
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>welcome</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

@@ -53,6 +53,32 @@
      <string>Matiere</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="gm_pushButton">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>90</y>
+      <width>101</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>groupemodule</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="grp_pushButton">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>330</y>
+      <width>83</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Groupe</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>

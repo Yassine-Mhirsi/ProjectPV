@@ -26,7 +26,19 @@ public:
     friend ostream& operator<<(ostream& os, const matiere& mat);
     string getNomMat() const { return NomMat; }
     float getCoef() const { return Coef; }
+    void PopulateTeacher();
+    void addMatiere();
     void PopulateMatiere();
+    void displaySelectedMatiere(const QModelIndex &index);
+    void deleteMatiere();
+    void modifyMatiere();
+    void clearLineEdits();
+    void Clear();
+    void searchMatiere(const QString &text);
+    void on_searchbar_textChanged(const QString &text);
+
+private slots:
+    void on_add_teacher_clicked();
 
 private:
     Ui::matiere *ui;

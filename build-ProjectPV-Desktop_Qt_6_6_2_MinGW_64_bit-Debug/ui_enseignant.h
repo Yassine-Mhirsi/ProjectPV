@@ -63,6 +63,12 @@ public:
 
         name_lineEdit = new QLineEdit(enseignant);
         name_lineEdit->setObjectName("name_lineEdit");
+        name_lineEdit->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    border-radius: 10px; /* Adjust the value to change the roundness */\n"
+"    padding: 5px; /* Adjust the padding as needed */\n"
+"    border: 1px solid #555555; /* Optional: add a border */\n"
+"}\n"
+""));
 
         verticalLayout_2->addWidget(name_lineEdit);
 
@@ -73,6 +79,12 @@ public:
 
         lastname_lineEdit = new QLineEdit(enseignant);
         lastname_lineEdit->setObjectName("lastname_lineEdit");
+        lastname_lineEdit->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    border-radius: 10px; /* Adjust the value to change the roundness */\n"
+"    padding: 5px; /* Adjust the padding as needed */\n"
+"    border: 1px solid #555555; /* Optional: add a border */\n"
+"}\n"
+""));
 
         verticalLayout_2->addWidget(lastname_lineEdit);
 
@@ -83,6 +95,12 @@ public:
 
         mail_lineEdit = new QLineEdit(enseignant);
         mail_lineEdit->setObjectName("mail_lineEdit");
+        mail_lineEdit->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    border-radius: 10px; /* Adjust the value to change the roundness */\n"
+"    padding: 5px; /* Adjust the padding as needed */\n"
+"    border: 1px solid #555555; /* Optional: add a border */\n"
+"}\n"
+""));
 
         verticalLayout_2->addWidget(mail_lineEdit);
 
@@ -93,6 +111,12 @@ public:
 
         numinsc_lineEdit = new QLineEdit(enseignant);
         numinsc_lineEdit->setObjectName("numinsc_lineEdit");
+        numinsc_lineEdit->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    border-radius: 10px; /* Adjust the value to change the roundness */\n"
+"    padding: 5px; /* Adjust the padding as needed */\n"
+"    border: 1px solid #555555; /* Optional: add a border */\n"
+"}\n"
+""));
 
         verticalLayout_2->addWidget(numinsc_lineEdit);
 
@@ -114,6 +138,12 @@ public:
 
         searchbar = new QLineEdit(enseignant);
         searchbar->setObjectName("searchbar");
+        searchbar->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    border-radius: 10px; /* Adjust the value to change the roundness */\n"
+"    padding: 5px; /* Adjust the padding as needed */\n"
+"    border: 1px solid #555555; /* Optional: add a border */\n"
+"}\n"
+""));
 
         verticalLayout_3->addWidget(searchbar);
 
@@ -165,7 +195,7 @@ public:
         label_3->setText(QCoreApplication::translate("enseignant", "Name : ", nullptr));
         label_4->setText(QCoreApplication::translate("enseignant", "Last Name : ", nullptr));
         label_5->setText(QCoreApplication::translate("enseignant", "Mail : ", nullptr));
-        label_6->setText(QCoreApplication::translate("enseignant", "Num_Insc : ", nullptr));
+        label_6->setText(QCoreApplication::translate("enseignant", "CNSS : ", nullptr));
         add_pushButton->setText(QCoreApplication::translate("enseignant", "Save", nullptr));
         clear_pushButton->setText(QCoreApplication::translate("enseignant", "Clear", nullptr));
         modify_pushButton->setText(QCoreApplication::translate("enseignant", "Modify", nullptr));

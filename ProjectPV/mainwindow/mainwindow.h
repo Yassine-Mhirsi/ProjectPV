@@ -18,14 +18,12 @@ public:
     ~MainWindow();
     void on_etudiant_pushButton_clicked();
     void on_pushButton_clicked();
- void on_pushButton_2_clicked();
+    void on_pushButton_2_clicked();
+    void on_gm_pushButton_clicked();
 
 
 private slots:
-
-
-
-
+    void on_grp_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;

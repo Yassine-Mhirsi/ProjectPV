@@ -196,6 +196,8 @@ void enseignant::saveStudent() {
     }
     ui->delete_pushButton->hide();
     ui->modify_pushButton->hide();
+    ui->clear_pushButton->hide();
+
 }
 
 void enseignant::toggleDeleteButtonVisibility() {
