@@ -11,19 +11,36 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QTableView>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_note
 {
 public:
+    QTableView *gm_tableView;
+    QPushButton *add_pushButton;
+    QComboBox *grp_comboBox;
 
     void setupUi(QDialog *note)
     {
         if (note->objectName().isEmpty())
             note->setObjectName("note");
-        note->resize(400, 300);
+        note->resize(961, 584);
+        gm_tableView = new QTableView(note);
+        gm_tableView->setObjectName("gm_tableView");
+        gm_tableView->setGeometry(QRect(70, 140, 761, 391));
+        gm_tableView->verticalHeader()->setVisible(false);
+        add_pushButton = new QPushButton(note);
+        add_pushButton->setObjectName("add_pushButton");
+        add_pushButton->setGeometry(QRect(470, 60, 83, 29));
+        grp_comboBox = new QComboBox(note);
+        grp_comboBox->setObjectName("grp_comboBox");
+        grp_comboBox->setGeometry(QRect(280, 60, 141, 28));
 
         retranslateUi(note);
 
@@ -33,6 +50,7 @@ public:
     void retranslateUi(QDialog *note)
     {
         note->setWindowTitle(QCoreApplication::translate("note", "Dialog", nullptr));
+        add_pushButton->setText(QCoreApplication::translate("note", "PushButton", nullptr));
     } // retranslateUi
 
 };

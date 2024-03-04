@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../ProjectPV/delegate.h"
+#include "../../ProjectPV/note/delegate.h"
 #include <QtCore/qmetatype.h>
 
 #if __has_include(<QtCore/qtmochelpers.h>)
@@ -36,28 +36,28 @@ QT_WARNING_DISABLE_GCC("-Wuseless-cast")
 namespace {
 
 #ifdef QT_MOC_HAS_STRINGDATA
-struct qt_meta_stringdata_CLASSButtonDelegateENDCLASS_t {};
-constexpr auto qt_meta_stringdata_CLASSButtonDelegateENDCLASS = QtMocHelpers::stringData(
-    "ButtonDelegate"
+struct qt_meta_stringdata_CLASSdelegateENDCLASS_t {};
+constexpr auto qt_meta_stringdata_CLASSdelegateENDCLASS = QtMocHelpers::stringData(
+    "delegate"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
-struct qt_meta_stringdata_CLASSButtonDelegateENDCLASS_t {
+struct qt_meta_stringdata_CLASSdelegateENDCLASS_t {
     uint offsetsAndSizes[2];
-    char stringdata0[15];
+    char stringdata0[9];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_CLASSButtonDelegateENDCLASS_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_CLASSButtonDelegateENDCLASS_t qt_meta_stringdata_CLASSButtonDelegateENDCLASS = {
+    uint(sizeof(qt_meta_stringdata_CLASSdelegateENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSdelegateENDCLASS_t qt_meta_stringdata_CLASSdelegateENDCLASS = {
     {
-        QT_MOC_LITERAL(0, 14)   // "ButtonDelegate"
+        QT_MOC_LITERAL(0, 8)   // "delegate"
     },
-    "ButtonDelegate"
+    "delegate"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_CLASSButtonDelegateENDCLASS[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSdelegateENDCLASS[] = {
 
  // content:
       12,       // revision
@@ -73,20 +73,20 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSButtonDelegateENDCLASS[] = {
        0        // eod
 };
 
-Q_CONSTINIT const QMetaObject ButtonDelegate::staticMetaObject = { {
-    QMetaObject::SuperData::link<QStyledItemDelegate::staticMetaObject>(),
-    qt_meta_stringdata_CLASSButtonDelegateENDCLASS.offsetsAndSizes,
-    qt_meta_data_CLASSButtonDelegateENDCLASS,
+Q_CONSTINIT const QMetaObject delegate::staticMetaObject = { {
+    QMetaObject::SuperData::link<QItemDelegate::staticMetaObject>(),
+    qt_meta_stringdata_CLASSdelegateENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSdelegateENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSButtonDelegateENDCLASS_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSdelegateENDCLASS_t,
         // Q_OBJECT / Q_GADGET
-        QtPrivate::TypeAndForceComplete<ButtonDelegate, std::true_type>
+        QtPrivate::TypeAndForceComplete<delegate, std::true_type>
     >,
     nullptr
 } };
 
-void ButtonDelegate::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void delegate::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     (void)_o;
     (void)_id;
@@ -94,22 +94,22 @@ void ButtonDelegate::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
     (void)_a;
 }
 
-const QMetaObject *ButtonDelegate::metaObject() const
+const QMetaObject *delegate::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *ButtonDelegate::qt_metacast(const char *_clname)
+void *delegate::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_CLASSButtonDelegateENDCLASS.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSdelegateENDCLASS.stringdata0))
         return static_cast<void*>(this);
-    return QStyledItemDelegate::qt_metacast(_clname);
+    return QItemDelegate::qt_metacast(_clname);
 }
 
-int ButtonDelegate::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int delegate::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QStyledItemDelegate::qt_metacall(_c, _id, _a);
+    _id = QItemDelegate::qt_metacall(_c, _id, _a);
     return _id;
 }
 QT_WARNING_POP

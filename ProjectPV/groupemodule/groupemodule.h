@@ -28,6 +28,7 @@ public:
     void deleteGm();
     void displaySelectedGm(const QModelIndex &index);
     void ToListeMat(const QModelIndex &index);
+    void modifyGm();
 private:
     string IdGM;
     string NomGM;

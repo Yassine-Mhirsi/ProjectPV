@@ -11,6 +11,7 @@
 #include "./matiere/matiere.h"
 #include "./groupemodule/groupemodule.h"
 #include"./groupe/groupe.h"
+#include "./note/note.h"
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -65,5 +66,12 @@ void MainWindow::on_grp_pushButton_clicked()
 {
     groupe *g = new groupe();
     g->show();
+}
+
+
+void MainWindow::on_note_pushButton_clicked()
+{
+    note *n = new note();
+    n->show();
 }
 

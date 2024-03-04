@@ -13,6 +13,7 @@ groupemodule::groupemodule(QWidget *parent)
     connect(ui->matiere_tableView, &QTableView::clicked, this, &groupemodule::displayselectedmat);
     connect(ui->gm_tableView, &QTableView::clicked, this, &groupemodule::displaySelectedGm);
     connect(ui->delete_pushButton, &QPushButton::clicked, this, &groupemodule::deleteGm);
+    connect(ui->modify_pushButton, &QPushButton::clicked, this, &groupemodule::modifyGm);
     connect(ui->gm_tableView, &QTableView::doubleClicked, this, &groupemodule::ToListeMat);
 
     PopulateMatiere();
@@ -21,6 +22,7 @@ groupemodule::groupemodule(QWidget *parent)
     ui->add_pushButton->hide();
     ui->matiere_tableView->hide();
     ui->idMat_lineEdit->hide();
+    ui->LM_tableView->hide();
 }
 
 groupemodule::~groupemodule() {delete ui;}
@@ -210,7 +212,7 @@ void groupemodule::deleteGm() {
         qDebug() << "Error deleting data:" << deleteQuery.lastError().text();
     } else {
         qDebug() << "Data deleted successfully";
-         // Refresh the table view to reflect changes
+            // Refresh the table view to reflect changes
         // clearLineEdits(); // Optionally clear the line edits after deletion
     }
 
@@ -311,7 +313,6 @@ void groupemodule::ToListeMat(const QModelIndex &index) {
             // Remove the row from the table view
             materialModel->removeRow(selectedRow);
 
-
             // Prepare the SQL query
             QSqlQuery query;
             query.prepare("SELECT m.IdMat, m.NomMat, m.Coef "
@@ -333,21 +334,46 @@ void groupemodule::ToListeMat(const QModelIndex &index) {
             QSqlQueryModel *mod = new QSqlQueryModel();
             mod->setQuery(std::move(query));
             tableView->setModel(mod);
-
-
-
         } else {
             qDebug() << "No rows selected"; // Debug output to indicate that no rows are selected
         }
 
     });
 
-
-
-
     dialog.exec();
 }
 
+
+void groupemodule::modifyGm() {
+    // Retrieve modified matiere information from line edits
+    QString idGm = ui->IdGM_lineEdit->text();
+    QString nom = ui->name_lineEdit->text();
+    double coef = ui->coef_doubleSpinBox->value(); // Assuming coef is stored as a double in the database
+
+    if (coef <= 0.5) {
+        QMessageBox::critical(this, "Error", "Coef cannot be empty or below 0.5");
+        return;
+    }
+
+    // Update matiere information in the database
+    QSqlQuery updateQuery;
+    updateQuery.prepare("UPDATE GroupeModule SET NomGm = :nom, CoefGm = :coef WHERE IdGm = :idGm");
+    updateQuery.bindValue(":nom", nom);
+    updateQuery.bindValue(":coef", coef);
+    updateQuery.bindValue(":idGm", idGm);
+
+    if (!updateQuery.exec()) {
+        qDebug() << "Error updating data:" << updateQuery.lastError().text();
+    } else {
+        qDebug() << "Data updated successfully";
+    }
+    PopulateGM();
+    // ui->delete_pushButton->hide();
+    // ui->modify_pushButton->hide();
+    // ui->clear_pushButton->hide();
+    // ui->id_label->hide();
+    // ui->id_lineEdit->hide();
+}
 
 
 

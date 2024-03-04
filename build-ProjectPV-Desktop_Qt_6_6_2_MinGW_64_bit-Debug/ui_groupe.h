@@ -27,8 +27,6 @@ QT_BEGIN_NAMESPACE
 class Ui_groupe
 {
 public:
-    QPushButton *showgm_pushButton;
-    QPushButton *showetu_pushButton;
     QTableView *gm_tableView;
     QTableView *etu_tableView;
     QTableView *grp_tableView;
@@ -54,39 +52,35 @@ public:
     QTableView *LG_tableView;
     QLineEdit *idgm_lineEdit;
     QLineEdit *idetu_lineEdit;
+    QPushButton *modify_pushButton;
+    QPushButton *delete_pushButton;
 
     void setupUi(QDialog *groupe)
     {
         if (groupe->objectName().isEmpty())
             groupe->setObjectName("groupe");
-        groupe->resize(896, 829);
-        showgm_pushButton = new QPushButton(groupe);
-        showgm_pushButton->setObjectName("showgm_pushButton");
-        showgm_pushButton->setGeometry(QRect(370, 110, 80, 24));
-        showetu_pushButton = new QPushButton(groupe);
-        showetu_pushButton->setObjectName("showetu_pushButton");
-        showetu_pushButton->setGeometry(QRect(370, 200, 80, 24));
+        groupe->resize(896, 576);
         gm_tableView = new QTableView(groupe);
         gm_tableView->setObjectName("gm_tableView");
-        gm_tableView->setGeometry(QRect(550, 60, 256, 192));
+        gm_tableView->setGeometry(QRect(585, 40, 291, 192));
         gm_tableView->verticalHeader()->setVisible(false);
         etu_tableView = new QTableView(groupe);
         etu_tableView->setObjectName("etu_tableView");
-        etu_tableView->setGeometry(QRect(550, 330, 256, 192));
+        etu_tableView->setGeometry(QRect(585, 310, 291, 192));
         etu_tableView->verticalHeader()->setVisible(false);
         grp_tableView = new QTableView(groupe);
         grp_tableView->setObjectName("grp_tableView");
-        grp_tableView->setGeometry(QRect(20, 330, 441, 192));
+        grp_tableView->setGeometry(QRect(20, 330, 511, 192));
         grp_tableView->verticalHeader()->setVisible(false);
         addgm_pushButton = new QPushButton(groupe);
         addgm_pushButton->setObjectName("addgm_pushButton");
-        addgm_pushButton->setGeometry(QRect(720, 260, 80, 24));
+        addgm_pushButton->setGeometry(QRect(790, 240, 80, 24));
         addetu_pushButton = new QPushButton(groupe);
         addetu_pushButton->setObjectName("addetu_pushButton");
-        addetu_pushButton->setGeometry(QRect(720, 530, 80, 24));
+        addetu_pushButton->setGeometry(QRect(790, 510, 80, 24));
         layoutWidget = new QWidget(groupe);
         layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(40, 80, 221, 180));
+        layoutWidget->setGeometry(QRect(110, 80, 221, 180));
         verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -185,13 +179,20 @@ public:
 
         LG_tableView = new QTableView(groupe);
         LG_tableView->setObjectName("LG_tableView");
-        LG_tableView->setGeometry(QRect(550, 600, 256, 192));
+        LG_tableView->setGeometry(QRect(425, 70, 121, 192));
+        LG_tableView->verticalHeader()->setVisible(false);
         idgm_lineEdit = new QLineEdit(groupe);
         idgm_lineEdit->setObjectName("idgm_lineEdit");
-        idgm_lineEdit->setGeometry(QRect(590, 260, 113, 28));
+        idgm_lineEdit->setGeometry(QRect(660, 240, 113, 28));
         idetu_lineEdit = new QLineEdit(groupe);
         idetu_lineEdit->setObjectName("idetu_lineEdit");
-        idetu_lineEdit->setGeometry(QRect(580, 530, 113, 28));
+        idetu_lineEdit->setGeometry(QRect(650, 510, 113, 28));
+        modify_pushButton = new QPushButton(groupe);
+        modify_pushButton->setObjectName("modify_pushButton");
+        modify_pushButton->setGeometry(QRect(50, 530, 83, 29));
+        delete_pushButton = new QPushButton(groupe);
+        delete_pushButton->setObjectName("delete_pushButton");
+        delete_pushButton->setGeometry(QRect(150, 530, 83, 29));
 
         retranslateUi(groupe);
 
@@ -201,8 +202,6 @@ public:
     void retranslateUi(QDialog *groupe)
     {
         groupe->setWindowTitle(QCoreApplication::translate("groupe", "Dialog", nullptr));
-        showgm_pushButton->setText(QCoreApplication::translate("groupe", "show GM", nullptr));
-        showetu_pushButton->setText(QCoreApplication::translate("groupe", "show Etu", nullptr));
         addgm_pushButton->setText(QCoreApplication::translate("groupe", "add", nullptr));
         addetu_pushButton->setText(QCoreApplication::translate("groupe", "add", nullptr));
         label->setText(QCoreApplication::translate("groupe", "IdGRP", nullptr));
@@ -232,6 +231,8 @@ public:
         numg_comboBox->setItemText(2, QCoreApplication::translate("groupe", "2", nullptr));
         numg_comboBox->setItemText(3, QCoreApplication::translate("groupe", "3", nullptr));
 
+        modify_pushButton->setText(QCoreApplication::translate("groupe", "Modify", nullptr));
+        delete_pushButton->setText(QCoreApplication::translate("groupe", "Delete", nullptr));
     } // retranslateUi
 
 };

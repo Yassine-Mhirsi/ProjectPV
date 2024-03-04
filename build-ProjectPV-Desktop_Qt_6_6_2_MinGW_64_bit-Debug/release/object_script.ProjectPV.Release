@@ -6,6 +6,7 @@ release/groupemodule.o
 release/main.o
 release/mainwindow.o
 release/matiere.o
+release/delegate.o
 release/note.o
 release/personne.o
 release/welcome.o
@@ -15,5 +16,6 @@ release/moc_groupe.o
 release/moc_groupemodule.o
 release/moc_mainwindow.o
 release/moc_matiere.o
+release/moc_delegate.o
 release/moc_note.o
 release/moc_welcome.o

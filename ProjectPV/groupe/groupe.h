@@ -30,6 +30,8 @@ public:
     void displayselectedEtu(const QModelIndex &index);
     void displaySelectedG(const QModelIndex &index);
     void ToListGRP(const QModelIndex &index);
+    void modifyGRP();
+    void deleteGRP();
 private:
     string IdGRP;
     string Niveau;

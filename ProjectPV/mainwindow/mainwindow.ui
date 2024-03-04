@@ -79,6 +79,19 @@
      <string>Groupe</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="note_pushButton">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>260</y>
+      <width>83</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Note</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>

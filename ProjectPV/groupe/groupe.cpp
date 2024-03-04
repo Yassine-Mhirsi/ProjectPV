@@ -13,10 +13,16 @@ groupe::groupe(QWidget *parent)
     PopulateLG();
     connect(ui->addgm_pushButton, &QPushButton::clicked, this, &groupe::addGRP_GM);
     connect(ui->addetu_pushButton, &QPushButton::clicked, this, &groupe::addGRP_Etu);
+    connect(ui->modify_pushButton, &QPushButton::clicked, this, &groupe::modifyGRP);
+    connect(ui->delete_pushButton, &QPushButton::clicked, this, &groupe::deleteGRP);
     connect(ui->gm_tableView, &QTableView::clicked, this, &groupe::displayselectedgm);
     connect(ui->grp_tableView, &QTableView::clicked, this, &groupe::displaySelectedG);
     connect(ui->etu_tableView, &QTableView::clicked, this, &groupe::displayselectedEtu);
     connect(ui->grp_tableView, &QTableView::doubleClicked, this, &::groupe::ToListGRP);
+    ui->LG_tableView->hide();
+    ui->idgm_lineEdit->hide();
+    ui->idetu_lineEdit->hide();
+
 
 
 }
@@ -245,16 +251,17 @@ void groupe::ToListGRP(const QModelIndex &index) {
 
     // Get the IdGm value from the selected row
     QString idGm = model->data(model->index(row, 0)).toString();
+    QString idGRP = ui->idGRP_lineEdit->text();
 
     qDebug() << "Selected IdGm:" << idGm; // Debug output to check the selected IdGm value
 
-    // Prepare SQL query to retrieve groupe data associated with the selected GroupeModule
+    // Prepare SQL query to retrieve group data associated with the selected GroupeModule
     QSqlQuery query;
-    query.prepare("SELECT g.IdGRP, g.Niveau, g.Diplôme, g.Spécialité, g.Num_G "
-                  "FROM Groupe AS g "
-                  "INNER JOIN Liste_Groupe AS lg ON g.IdGRP = lg.IdGRP "
-                  "WHERE lg.IdGm = :idGm");
-    query.bindValue(":idGm", idGm);
+    query.prepare("SELECT gm.IdGm, gm.NomGm, gm.CoefGm "
+                  "FROM GroupeModule AS gm "
+                  "INNER JOIN Liste_Groupe AS lg ON gm.IdGm = lg.IdGm "
+                  "WHERE lg.IdGRP = :idGRP");
+    query.bindValue(":idGRP", idGRP);
 
     // Execute the SQL query
     if (!query.exec()) {
@@ -263,8 +270,11 @@ void groupe::ToListGRP(const QModelIndex &index) {
         return;
     }
 
-    // Set up dialog window
+    // Set up dialog window for displaying group data
     QDialog dialog;
+    dialog.setWindowTitle("Group Data");
+    dialog.setWindowFlags(Qt::Window);
+    dialog.setWindowModality(Qt::WindowModal); // Set window modality to WindowModal
     QVBoxLayout *layout = new QVBoxLayout(&dialog);
     QTableView *tableView = new QTableView(&dialog);
     QPushButton *deleteButton = new QPushButton("Delete Selected Row", &dialog);
@@ -273,10 +283,11 @@ void groupe::ToListGRP(const QModelIndex &index) {
     layout->addWidget(deleteButton);
     dialog.setLayout(layout);
 
-    // Set model for the table view to display groupe data
+    // Set model for the table view to display group data
     QSqlQueryModel *groupeModel = new QSqlQueryModel();
     groupeModel->setQuery(std::move(query));
     tableView->setModel(groupeModel);
+    tableView->verticalHeader()->setVisible(false);
 
     // Set column headers for better readability (optional)
     groupeModel->setHeaderData(0, Qt::Horizontal, QObject::tr("IDGRP"));
@@ -318,6 +329,118 @@ void groupe::ToListGRP(const QModelIndex &index) {
             qDebug() << "No rows selected"; // Debug output to indicate that no rows are selected
         }
     });
+    dialog.setGeometry(100, 100, 400, 300); // Adjust the position and size as needed
 
-    dialog.exec();
+    // Add another dialog for displaying student data
+    QDialog studentDialog;
+    studentDialog.setWindowTitle("Student Data");
+    studentDialog.setWindowFlags(Qt::Window);
+    studentDialog.setWindowModality(Qt::WindowModal); // Set window modality to WindowModal
+    QVBoxLayout *studentLayout = new QVBoxLayout(&studentDialog);
+    QTableView *studentTableView = new QTableView(&studentDialog);
+
+    studentLayout->addWidget(studentTableView);
+    studentDialog.setLayout(studentLayout);
+
+    // Prepare SQL query to retrieve student data associated with the selected group
+    QSqlQuery studentQuery;
+    studentQuery.prepare("SELECT e.* "
+                         "FROM Etudiant AS e "
+                         "INNER JOIN Liste_Groupe AS lg ON e.numinsc = lg.numinsc "
+                         "WHERE lg.IdGRP = :idGRP");
+    studentQuery.bindValue(":idGRP", idGRP);
+
+    // Execute the SQL query
+    if (!studentQuery.exec()) {
+        // If an error occurs while executing the query, print an error message
+        qDebug() << "Error executing student query:" << studentQuery.lastError().text();
+        return;
+    }
+
+    // Set model for the table view to display student data
+    QSqlQueryModel *studentModel = new QSqlQueryModel();
+    studentModel->setQuery(std::move(studentQuery));
+    studentTableView->setModel(studentModel);
+    studentTableView->verticalHeader()->setVisible(false);
+    studentDialog.setGeometry(600, 100, 400, 300); // Adjust the position and size as needed
+
+    // Set column headers for better readability (optional)
+    // Adjust column widths to fit content (optional)
+    studentTableView->resizeColumnsToContents();
+
+    dialog.show();
+    studentDialog.exec();
+}
+
+void groupe::deleteGRP() {
+    // Retrieve the ID of the group to delete
+    QString idGrp = ui->idGRP_lineEdit->text();
+
+    // Check if the ID is empty
+    if (idGrp.isEmpty()) {
+        qDebug() << "Group ID is empty.";
+        // You may want to display an error message to the user here
+        return;
+    }
+
+    // Prepare the SQL query to delete related rows in Liste_Groupe
+    QSqlQuery deleteListeGroupeQuery;
+    deleteListeGroupeQuery.prepare("DELETE FROM Liste_Groupe WHERE IdGRP = :idGrp");
+    deleteListeGroupeQuery.bindValue(":idGrp", idGrp);
+
+    // Execute the delete query for Liste_Groupe
+    if (!deleteListeGroupeQuery.exec()) {
+        qDebug() << "Error deleting related rows from Liste_Groupe:" << deleteListeGroupeQuery.lastError().text();
+        // You may want to display an error message to the user here
+        return; // Return if there's an error to prevent deleting the main group record
+    }
+    PopulateLG();
+    // Prepare the SQL query to delete the group
+    QSqlQuery deleteQuery;
+    deleteQuery.prepare("DELETE FROM Groupe WHERE IdGRP = :idGrp");
+    deleteQuery.bindValue(":idGrp", idGrp);
+
+    // Execute the delete query for Groupe
+    if (!deleteQuery.exec()) {
+        qDebug() << "Error deleting group:" << deleteQuery.lastError().text();
+        // You may want to display an error message to the user here
+    } else {
+        qDebug() << "Group deleted successfully";
+        PopulateGRP(); // Refresh the table view to reflect changes
+    }
+}
+
+
+void groupe::modifyGRP() {
+    // Retrieve modified matiere information from line edits
+    QString idGrp = ui->idGRP_lineEdit->text();
+    QString niv = ui->niv_comboBox->currentText();
+    QString dip = ui->dip_comboBox->currentText();
+    QString spec = ui->spec_comboBox->currentText();
+    int numg = ui->numg_comboBox->currentText().toInt();
+
+
+    // Update matiere information in the database
+    QSqlQuery updateQuery;
+    updateQuery.prepare("UPDATE Groupe SET Niveau = :niv, Diplôme = :dip, Spécialité = :spec ,Num_G =:numg WHERE IdGRP = :idGrp");
+    updateQuery.bindValue(":idGrp", idGrp);
+    updateQuery.bindValue(":niv", niv);
+    updateQuery.bindValue(":dip", dip);
+    updateQuery.bindValue(":spec", spec);
+    updateQuery.bindValue(":numg", numg);
+
+    if (!updateQuery.exec()) {
+        qDebug() << "Error updating data:" << updateQuery.lastError().text();
+    } else {
+        qDebug() << "Data updated successfully";
+        PopulateGRP(); // Refresh the table view to reflect changes
+        // ui->modify_pushButton->hide();
+    }
+    PopulateGRP();
+    // ui->delete_pushButton->hide();
+    // ui->modify_pushButton->hide();
+    // ui->clear_pushButton->hide();
+    // ui->id_label->hide();
+    // ui->id_lineEdit->hide();
+
 }

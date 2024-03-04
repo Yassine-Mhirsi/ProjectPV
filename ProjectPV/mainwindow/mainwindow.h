@@ -25,6 +25,8 @@ public:
 private slots:
     void on_grp_pushButton_clicked();
 
+    void on_note_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

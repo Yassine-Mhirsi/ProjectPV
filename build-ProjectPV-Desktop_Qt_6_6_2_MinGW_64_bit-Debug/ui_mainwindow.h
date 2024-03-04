@@ -26,6 +26,7 @@ public:
     QPushButton *matiere_pushButton;
     QPushButton *gm_pushButton;
     QPushButton *grp_pushButton;
+    QPushButton *note_pushButton;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -49,6 +50,9 @@ public:
         grp_pushButton = new QPushButton(centralwidget);
         grp_pushButton->setObjectName("grp_pushButton");
         grp_pushButton->setGeometry(QRect(430, 330, 83, 29));
+        note_pushButton = new QPushButton(centralwidget);
+        note_pushButton->setObjectName("note_pushButton");
+        note_pushButton->setGeometry(QRect(550, 260, 83, 29));
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);
@@ -64,6 +68,7 @@ public:
         matiere_pushButton->setText(QCoreApplication::translate("MainWindow", "Matiere", nullptr));
         gm_pushButton->setText(QCoreApplication::translate("MainWindow", "groupemodule", nullptr));
         grp_pushButton->setText(QCoreApplication::translate("MainWindow", "Groupe", nullptr));
+        note_pushButton->setText(QCoreApplication::translate("MainWindow", "Note", nullptr));
     } // retranslateUi
 
 };

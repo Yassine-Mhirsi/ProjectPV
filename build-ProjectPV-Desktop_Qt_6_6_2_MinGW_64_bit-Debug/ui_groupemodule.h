@@ -61,11 +61,11 @@ public:
         matiere_tableView->verticalHeader()->setVisible(false);
         gm_tableView = new QTableView(groupemodule);
         gm_tableView->setObjectName("gm_tableView");
-        gm_tableView->setGeometry(QRect(20, 240, 371, 201));
+        gm_tableView->setGeometry(QRect(20, 240, 651, 201));
         gm_tableView->verticalHeader()->setVisible(false);
         layoutWidget = new QWidget(groupemodule);
         layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(140, 140, 106, 27));
+        layoutWidget->setGeometry(QRect(140, 140, 130, 31));
         horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName("horizontalLayout");
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -81,7 +81,7 @@ public:
 
         layoutWidget1 = new QWidget(groupemodule);
         layoutWidget1->setObjectName("layoutWidget1");
-        layoutWidget1->setGeometry(QRect(140, 90, 162, 26));
+        layoutWidget1->setGeometry(QRect(140, 90, 162, 30));
         horizontalLayout_2 = new QHBoxLayout(layoutWidget1);
         horizontalLayout_2->setObjectName("horizontalLayout_2");
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -100,7 +100,7 @@ public:
         add_pushButton->setGeometry(QRect(680, 240, 51, 24));
         matiere_pushButton = new QPushButton(groupemodule);
         matiere_pushButton->setObjectName("matiere_pushButton");
-        matiere_pushButton->setGeometry(QRect(150, 190, 80, 24));
+        matiere_pushButton->setGeometry(QRect(150, 190, 101, 24));
         idMat_lineEdit = new QLineEdit(groupemodule);
         idMat_lineEdit->setObjectName("idMat_lineEdit");
         idMat_lineEdit->setGeometry(QRect(510, 240, 113, 24));
@@ -110,7 +110,7 @@ public:
         LM_tableView->verticalHeader()->setVisible(false);
         layoutWidget2 = new QWidget(groupemodule);
         layoutWidget2->setObjectName("layoutWidget2");
-        layoutWidget2->setGeometry(QRect(140, 50, 165, 26));
+        layoutWidget2->setGeometry(QRect(140, 50, 165, 30));
         horizontalLayout_3 = new QHBoxLayout(layoutWidget2);
         horizontalLayout_3->setObjectName("horizontalLayout_3");
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
@@ -126,7 +126,7 @@ public:
 
         layoutWidget3 = new QWidget(groupemodule);
         layoutWidget3->setObjectName("layoutWidget3");
-        layoutWidget3->setGeometry(QRect(70, 450, 254, 26));
+        layoutWidget3->setGeometry(QRect(70, 450, 256, 31));
         horizontalLayout_4 = new QHBoxLayout(layoutWidget3);
         horizontalLayout_4->setObjectName("horizontalLayout_4");
         horizontalLayout_4->setContentsMargins(0, 0, 0, 0);
