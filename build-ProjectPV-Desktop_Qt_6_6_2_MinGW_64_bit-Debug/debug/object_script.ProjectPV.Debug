@@ -6,7 +6,6 @@ debug/groupemodule.o
 debug/main.o
 debug/mainwindow.o
 debug/matiere.o
-debug/delegate.o
 debug/note.o
 debug/personne.o
 debug/welcome.o
@@ -16,6 +15,5 @@ debug/moc_groupe.o
 debug/moc_groupemodule.o
 debug/moc_mainwindow.o
 debug/moc_matiere.o
-debug/moc_delegate.o
 debug/moc_note.o
 debug/moc_welcome.o

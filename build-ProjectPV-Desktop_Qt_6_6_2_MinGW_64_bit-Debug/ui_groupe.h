@@ -27,12 +27,11 @@ QT_BEGIN_NAMESPACE
 class Ui_groupe
 {
 public:
-    QTableView *gm_tableView;
-    QTableView *etu_tableView;
-    QTableView *grp_tableView;
-    QPushButton *addgm_pushButton;
-    QPushButton *addetu_pushButton;
+    QTableView *LG_tableView;
+    QLineEdit *idgm_lineEdit;
+    QLineEdit *idetu_lineEdit;
     QWidget *layoutWidget;
+    QVBoxLayout *verticalLayout_2;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
     QLabel *label;
@@ -49,9 +48,24 @@ public:
     QHBoxLayout *horizontalLayout_5;
     QLabel *label_2;
     QComboBox *numg_comboBox;
-    QTableView *LG_tableView;
-    QLineEdit *idgm_lineEdit;
-    QLineEdit *idetu_lineEdit;
+    QVBoxLayout *verticalLayout_5;
+    QVBoxLayout *verticalLayout_3;
+    QHBoxLayout *horizontalLayout_7;
+    QPushButton *showgm_pushButton;
+    QPushButton *showetu_pushButton;
+    QHBoxLayout *horizontalLayout_8;
+    QPushButton *hidegm_pushButton;
+    QPushButton *hideetu_pushButton;
+    QLabel *gm_label;
+    QTableView *gm_tableView;
+    QPushButton *addgm_pushButton;
+    QVBoxLayout *verticalLayout_4;
+    QLabel *etu_label;
+    QTableView *etu_tableView;
+    QPushButton *addetu_pushButton;
+    QLabel *label_8;
+    QTableView *grp_tableView;
+    QHBoxLayout *horizontalLayout_6;
     QPushButton *modify_pushButton;
     QPushButton *delete_pushButton;
 
@@ -59,31 +73,25 @@ public:
     {
         if (groupe->objectName().isEmpty())
             groupe->setObjectName("groupe");
-        groupe->resize(896, 576);
-        gm_tableView = new QTableView(groupe);
-        gm_tableView->setObjectName("gm_tableView");
-        gm_tableView->setGeometry(QRect(585, 40, 291, 192));
-        gm_tableView->verticalHeader()->setVisible(false);
-        etu_tableView = new QTableView(groupe);
-        etu_tableView->setObjectName("etu_tableView");
-        etu_tableView->setGeometry(QRect(585, 310, 291, 192));
-        etu_tableView->verticalHeader()->setVisible(false);
-        grp_tableView = new QTableView(groupe);
-        grp_tableView->setObjectName("grp_tableView");
-        grp_tableView->setGeometry(QRect(20, 330, 511, 192));
-        grp_tableView->verticalHeader()->setVisible(false);
-        addgm_pushButton = new QPushButton(groupe);
-        addgm_pushButton->setObjectName("addgm_pushButton");
-        addgm_pushButton->setGeometry(QRect(790, 240, 80, 24));
-        addetu_pushButton = new QPushButton(groupe);
-        addetu_pushButton->setObjectName("addetu_pushButton");
-        addetu_pushButton->setGeometry(QRect(790, 510, 80, 24));
+        groupe->resize(435, 903);
+        LG_tableView = new QTableView(groupe);
+        LG_tableView->setObjectName("LG_tableView");
+        LG_tableView->setGeometry(QRect(430, 50, 121, 192));
+        LG_tableView->verticalHeader()->setVisible(false);
+        idgm_lineEdit = new QLineEdit(groupe);
+        idgm_lineEdit->setObjectName("idgm_lineEdit");
+        idgm_lineEdit->setGeometry(QRect(440, 250, 113, 28));
+        idetu_lineEdit = new QLineEdit(groupe);
+        idetu_lineEdit->setObjectName("idetu_lineEdit");
+        idetu_lineEdit->setGeometry(QRect(440, 290, 113, 28));
         layoutWidget = new QWidget(groupe);
         layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(110, 80, 221, 180));
-        verticalLayout = new QVBoxLayout(layoutWidget);
+        layoutWidget->setGeometry(QRect(7, 12, 421, 881));
+        verticalLayout_2 = new QVBoxLayout(layoutWidget);
+        verticalLayout_2->setObjectName("verticalLayout_2");
+        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+        verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName("verticalLayout");
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName("horizontalLayout");
         label = new QLabel(layoutWidget);
@@ -177,22 +185,112 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_5);
 
-        LG_tableView = new QTableView(groupe);
-        LG_tableView->setObjectName("LG_tableView");
-        LG_tableView->setGeometry(QRect(425, 70, 121, 192));
-        LG_tableView->verticalHeader()->setVisible(false);
-        idgm_lineEdit = new QLineEdit(groupe);
-        idgm_lineEdit->setObjectName("idgm_lineEdit");
-        idgm_lineEdit->setGeometry(QRect(660, 240, 113, 28));
-        idetu_lineEdit = new QLineEdit(groupe);
-        idetu_lineEdit->setObjectName("idetu_lineEdit");
-        idetu_lineEdit->setGeometry(QRect(650, 510, 113, 28));
-        modify_pushButton = new QPushButton(groupe);
+
+        verticalLayout_2->addLayout(verticalLayout);
+
+        verticalLayout_5 = new QVBoxLayout();
+        verticalLayout_5->setObjectName("verticalLayout_5");
+        verticalLayout_3 = new QVBoxLayout();
+        verticalLayout_3->setObjectName("verticalLayout_3");
+        horizontalLayout_7 = new QHBoxLayout();
+        horizontalLayout_7->setObjectName("horizontalLayout_7");
+        showgm_pushButton = new QPushButton(layoutWidget);
+        showgm_pushButton->setObjectName("showgm_pushButton");
+
+        horizontalLayout_7->addWidget(showgm_pushButton);
+
+        showetu_pushButton = new QPushButton(layoutWidget);
+        showetu_pushButton->setObjectName("showetu_pushButton");
+
+        horizontalLayout_7->addWidget(showetu_pushButton);
+
+
+        verticalLayout_3->addLayout(horizontalLayout_7);
+
+        horizontalLayout_8 = new QHBoxLayout();
+        horizontalLayout_8->setObjectName("horizontalLayout_8");
+        hidegm_pushButton = new QPushButton(layoutWidget);
+        hidegm_pushButton->setObjectName("hidegm_pushButton");
+
+        horizontalLayout_8->addWidget(hidegm_pushButton);
+
+        hideetu_pushButton = new QPushButton(layoutWidget);
+        hideetu_pushButton->setObjectName("hideetu_pushButton");
+
+        horizontalLayout_8->addWidget(hideetu_pushButton);
+
+
+        verticalLayout_3->addLayout(horizontalLayout_8);
+
+        gm_label = new QLabel(layoutWidget);
+        gm_label->setObjectName("gm_label");
+
+        verticalLayout_3->addWidget(gm_label);
+
+        gm_tableView = new QTableView(layoutWidget);
+        gm_tableView->setObjectName("gm_tableView");
+        gm_tableView->verticalHeader()->setVisible(false);
+
+        verticalLayout_3->addWidget(gm_tableView);
+
+        addgm_pushButton = new QPushButton(layoutWidget);
+        addgm_pushButton->setObjectName("addgm_pushButton");
+
+        verticalLayout_3->addWidget(addgm_pushButton);
+
+
+        verticalLayout_5->addLayout(verticalLayout_3);
+
+        verticalLayout_4 = new QVBoxLayout();
+        verticalLayout_4->setObjectName("verticalLayout_4");
+        etu_label = new QLabel(layoutWidget);
+        etu_label->setObjectName("etu_label");
+
+        verticalLayout_4->addWidget(etu_label);
+
+        etu_tableView = new QTableView(layoutWidget);
+        etu_tableView->setObjectName("etu_tableView");
+        etu_tableView->verticalHeader()->setVisible(false);
+
+        verticalLayout_4->addWidget(etu_tableView);
+
+        addetu_pushButton = new QPushButton(layoutWidget);
+        addetu_pushButton->setObjectName("addetu_pushButton");
+
+        verticalLayout_4->addWidget(addetu_pushButton);
+
+
+        verticalLayout_5->addLayout(verticalLayout_4);
+
+
+        verticalLayout_2->addLayout(verticalLayout_5);
+
+        label_8 = new QLabel(layoutWidget);
+        label_8->setObjectName("label_8");
+
+        verticalLayout_2->addWidget(label_8);
+
+        grp_tableView = new QTableView(layoutWidget);
+        grp_tableView->setObjectName("grp_tableView");
+        grp_tableView->verticalHeader()->setVisible(false);
+
+        verticalLayout_2->addWidget(grp_tableView);
+
+        horizontalLayout_6 = new QHBoxLayout();
+        horizontalLayout_6->setObjectName("horizontalLayout_6");
+        modify_pushButton = new QPushButton(layoutWidget);
         modify_pushButton->setObjectName("modify_pushButton");
-        modify_pushButton->setGeometry(QRect(50, 530, 83, 29));
-        delete_pushButton = new QPushButton(groupe);
+
+        horizontalLayout_6->addWidget(modify_pushButton);
+
+        delete_pushButton = new QPushButton(layoutWidget);
         delete_pushButton->setObjectName("delete_pushButton");
-        delete_pushButton->setGeometry(QRect(150, 530, 83, 29));
+
+        horizontalLayout_6->addWidget(delete_pushButton);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_6);
+
 
         retranslateUi(groupe);
 
@@ -202,8 +300,6 @@ public:
     void retranslateUi(QDialog *groupe)
     {
         groupe->setWindowTitle(QCoreApplication::translate("groupe", "Dialog", nullptr));
-        addgm_pushButton->setText(QCoreApplication::translate("groupe", "add", nullptr));
-        addetu_pushButton->setText(QCoreApplication::translate("groupe", "add", nullptr));
         label->setText(QCoreApplication::translate("groupe", "IdGRP", nullptr));
         label_5->setText(QCoreApplication::translate("groupe", "Niveau", nullptr));
         niv_comboBox->setItemText(0, QCoreApplication::translate("groupe", "Select...", nullptr));
@@ -231,6 +327,15 @@ public:
         numg_comboBox->setItemText(2, QCoreApplication::translate("groupe", "2", nullptr));
         numg_comboBox->setItemText(3, QCoreApplication::translate("groupe", "3", nullptr));
 
+        showgm_pushButton->setText(QCoreApplication::translate("groupe", "Show GroupeModule", nullptr));
+        showetu_pushButton->setText(QCoreApplication::translate("groupe", "Show Etudiant", nullptr));
+        hidegm_pushButton->setText(QCoreApplication::translate("groupe", "Hide GroupeModule", nullptr));
+        hideetu_pushButton->setText(QCoreApplication::translate("groupe", "Hide Etudiant", nullptr));
+        gm_label->setText(QCoreApplication::translate("groupe", "GroupeModule : ", nullptr));
+        addgm_pushButton->setText(QCoreApplication::translate("groupe", "Add Selected GM", nullptr));
+        etu_label->setText(QCoreApplication::translate("groupe", "Etudiant : ", nullptr));
+        addetu_pushButton->setText(QCoreApplication::translate("groupe", "Add Selected Etudiant", nullptr));
+        label_8->setText(QCoreApplication::translate("groupe", "Groupe :", nullptr));
         modify_pushButton->setText(QCoreApplication::translate("groupe", "Modify", nullptr));
         delete_pushButton->setText(QCoreApplication::translate("groupe", "Delete", nullptr));
     } // retranslateUi

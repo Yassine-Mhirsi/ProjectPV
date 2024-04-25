@@ -20,10 +20,20 @@ public:
     note(matiere*, etudiant*, float, string);
     ~note();
     friend std::ostream& operator<<(std::ostream& os, const note& grade);
-    void addNote();
+    void displaySelectedNote(const QModelIndex &index);
+    void ModifyNote();
     void PopulateGRP();
     void ToListeGRP(const QModelIndex &index);
     void PopulateGM();
+    void PopulateNote();
+    void calculateStudentAverage();
+    void MoyMat();
+    void PopulateMoyMat();
+    void MoyGm();
+    void PopulateMoyGm();
+    void PopulateMoyGenerale();
+    void MoyGenerale();
+    void pv();
 
 private:
     matiere* Mat;

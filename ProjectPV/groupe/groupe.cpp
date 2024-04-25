@@ -7,6 +7,14 @@ groupe::groupe(QWidget *parent)
     , ui(new Ui::groupe)
 {
     ui->setupUi(this);
+    ui->hidegm_pushButton->hide();
+    ui->hideetu_pushButton->hide();
+    ui->gm_label->hide();
+    ui->gm_tableView->hide();
+    ui->addgm_pushButton->hide();
+    ui->etu_label->hide();
+    ui->etu_tableView->hide();
+    ui->addetu_pushButton->hide();
     PopulateGM();
     PopulateEtu();
     PopulateGRP();
@@ -22,6 +30,10 @@ groupe::groupe(QWidget *parent)
     ui->LG_tableView->hide();
     ui->idgm_lineEdit->hide();
     ui->idetu_lineEdit->hide();
+    connect(ui->showgm_pushButton, &QPushButton::clicked, this, &groupe::showGM);
+    connect(ui->hidegm_pushButton, &QPushButton::clicked, this, &groupe::hideGM);
+    connect(ui->showetu_pushButton, &QPushButton::clicked, this, &groupe::showEtu);
+    connect(ui->hideetu_pushButton, &QPushButton::clicked, this, &groupe::hideEtu);
 
 
 
@@ -50,6 +62,52 @@ std::ostream& operator<<(std::ostream& os, const groupe& grp) {
         os << *etudiant << "\n";
     }
     return os;
+}
+
+void groupe::showGM(){
+    ui->showgm_pushButton->hide();
+    ui->hidegm_pushButton->show();
+    ui->gm_label->show();
+    ui->gm_tableView->show();
+    ui->addgm_pushButton->show();
+}
+
+void groupe::hideGM(){
+    ui->showgm_pushButton->show();
+    ui->hidegm_pushButton->hide();
+    ui->gm_label->hide();
+    ui->gm_tableView->hide();
+    ui->addgm_pushButton->hide();
+}
+
+void groupe::showEtu(){
+    ui->showetu_pushButton->hide();
+    ui->hideetu_pushButton->show();
+    ui->etu_label->show();
+    ui->etu_tableView->show();
+    ui->addetu_pushButton->show();
+}
+
+void groupe::hideEtu(){
+    ui->showetu_pushButton->show();
+    ui->hideetu_pushButton->hide();
+    ui->etu_label->hide();
+    ui->etu_tableView->hide();
+    ui->addetu_pushButton->hide();
+}
+
+void groupe::customizeTableView() {
+    ui->grp_tableView->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Fixed);
+    ui->grp_tableView->horizontalHeader()->resizeSection(0, 60);
+
+    ui->grp_tableView->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Fixed);
+    ui->grp_tableView->horizontalHeader()->resizeSection(1, 90);
+
+    ui->grp_tableView->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Fixed);
+    ui->grp_tableView->horizontalHeader()->resizeSection(2, 80);
+
+    ui->grp_tableView->horizontalHeader()->setSectionResizeMode(3, QHeaderView::Fixed);
+    ui->grp_tableView->horizontalHeader()->resizeSection(3, 180);
 }
 
 
@@ -113,8 +171,6 @@ void groupe::displaySelectedG(const QModelIndex &index) {
     QString dip = model->data(model->index(row, 2)).toString(); // Assuming the second column contains NomMat
     QString spec = model->data(model->index(row, 3)).toString(); // Assuming the second column contains NomMat
     QString numg = model->data(model->index(row, 4)).toString(); // Assuming the second column contains NomMat
-
-    // int enseignantId = model->data(model->index(row, 3)).toInt(); // Assuming the fourth column contains Ens
 
     // Populate line edits and combobox with the selected groupe's information
     ui->idGRP_lineEdit->setText(idG);
@@ -366,7 +422,54 @@ void groupe::ToListGRP(const QModelIndex &index) {
 
     // Set column headers for better readability (optional)
     // Adjust column widths to fit content (optional)
+
+
     studentTableView->resizeColumnsToContents();
+    // Add delete button to the student dialog
+    QPushButton *deleteStudentButton = new QPushButton("Delete Selected Student", &studentDialog);
+    studentLayout->addWidget(deleteStudentButton);
+
+    // Connect the delete button to a slot that handles student deletion
+    // Connect the delete button to a slot that handles student deletion
+    connect(deleteStudentButton, &QPushButton::clicked, this, [=]() {
+        // Get the currently selected student row index from the studentTableView
+        int selectedStudentRow = studentTableView->currentIndex().row();
+
+        // Check if a student row is selected
+        if (selectedStudentRow >= 0) {
+            // Get the student's numinsc value from the selected row
+            QString selectedNuminsc = studentModel->data(studentModel->index(selectedStudentRow, 0)).toString();
+            qDebug() << "Selected Student Numinsc:" << selectedNuminsc;
+
+            // Prepare SQL query to delete the selected student from Liste_Groupe
+            QSqlQuery deleteStudentQuery;
+            deleteStudentQuery.prepare("DELETE FROM Liste_Groupe WHERE IdGRP = :idGRP AND numinsc = :numinsc");
+            deleteStudentQuery.bindValue(":idGRP", idGRP);
+            deleteStudentQuery.bindValue(":numinsc", selectedNuminsc);
+
+            // Execute the delete query
+            if (!deleteStudentQuery.exec()) {
+                // If an error occurs while executing the query, print an error message
+                qDebug() << "Error deleting student from Liste_Groupe:" << deleteStudentQuery.lastError().text();
+                return;
+            } else {
+                qDebug() << "Student deleted successfully"; // Debug output to indicate successful deletion
+            }
+
+            // Remove the student row from the student model
+            studentModel->removeRow(selectedStudentRow);
+            studentModel->submit(); // Submit changes to the model
+
+                // Refresh the student table view
+            studentTableView->viewport()->update();
+        } else {
+            qDebug() << "No student row selected"; // Debug output to indicate that no student row is selected
+        }
+    });
+
+
+
+
 
     dialog.show();
     studentDialog.exec();

@@ -9,6 +9,12 @@
 #include "note/note.h"
 #include <vector>
 #include <QApplication>
+#include <QSqlQuery>
+#include <QDebug>
+
+
+
+
 
 int main(int argc, char *argv[])
 {
@@ -16,6 +22,11 @@ int main(int argc, char *argv[])
 
     Welcome we;
     we.show();
+
+    QObject::connect(&a, &QApplication::aboutToQuit, [&]() {
+        // calculateStudentAverage();
+        // calculateStudentAverage();
+    });
 
     QObject::connect(&a, &QApplication::aboutToQuit, [&]() {
         QSqlDatabase db = DatabaseManager::instance().database();
@@ -26,6 +37,29 @@ int main(int argc, char *argv[])
             qDebug() << "Database connection already closed";
         }
     });
+
+
+    // QSqlQuery alterQuery;
+    // alterQuery.prepare("ALTER TABLE GroupeModule ADD COLUMN MoyGM REAL");
+
+    // // Execute the alter query
+    // if (!alterQuery.exec()) {
+    //     // If an error occurs while executing the query, print an error message
+    //     qDebug() << "Error adding MoyGM column to GroupeModule table:" << alterQuery.lastError().text();
+    // } else {
+    //     qDebug() << "MoyGM column added successfully to GroupeModule table";
+    // }
+
+
+    // QSqlQuery query;
+    // query.prepare("DROP table MoyGenerale");
+    // if (!query.exec()) {
+    //     qDebug() << "Error deleting data from Note table:" << query.lastError().text();
+    // } else {
+    //     qDebug() << "Data deleted from Note table successfully!";
+    // }
+
+
 
 
     // enseignant* ens = new enseignant(1, "bachir", "boubou", "bachir@gmail.com", 11);

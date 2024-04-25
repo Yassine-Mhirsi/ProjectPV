@@ -6,115 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>752</width>
-    <height>486</height>
+    <width>435</width>
+    <height>741</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QTableView" name="matiere_tableView">
-   <property name="geometry">
-    <rect>
-     <x>395</x>
-     <y>10</y>
-     <width>341</width>
-     <height>221</height>
-    </rect>
-   </property>
-   <attribute name="verticalHeaderVisible">
-    <bool>false</bool>
-   </attribute>
-  </widget>
-  <widget class="QTableView" name="gm_tableView">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>240</y>
-     <width>651</width>
-     <height>201</height>
-    </rect>
-   </property>
-   <attribute name="verticalHeaderVisible">
-    <bool>false</bool>
-   </attribute>
-  </widget>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>140</x>
-     <y>140</y>
-     <width>130</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <widget class="QLabel" name="label_2">
-      <property name="text">
-       <string>CoefGM</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QDoubleSpinBox" name="coef_doubleSpinBox"/>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>140</x>
-     <y>90</y>
-     <width>162</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_2">
-    <item>
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>NomGM</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="name_lineEdit"/>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QPushButton" name="add_pushButton">
-   <property name="geometry">
-    <rect>
-     <x>680</x>
-     <y>240</y>
-     <width>51</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Add</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="matiere_pushButton">
-   <property name="geometry">
-    <rect>
-     <x>150</x>
-     <y>190</y>
-     <width>101</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Show Matiere</string>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="idMat_lineEdit">
    <property name="geometry">
     <rect>
-     <x>510</x>
-     <y>240</y>
-     <width>113</width>
+     <x>400</x>
+     <y>300</y>
+     <width>41</width>
      <height>24</height>
     </rect>
    </property>
@@ -122,10 +26,10 @@
   <widget class="QTableView" name="LM_tableView">
    <property name="geometry">
     <rect>
-     <x>450</x>
-     <y>270</y>
-     <width>256</width>
-     <height>201</height>
+     <x>420</x>
+     <y>190</y>
+     <width>71</width>
+     <height>81</height>
     </rect>
    </property>
    <attribute name="verticalHeaderVisible">
@@ -135,59 +39,153 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>50</y>
-     <width>165</width>
-     <height>30</height>
+     <x>10</x>
+     <y>10</y>
+     <width>411</width>
+     <height>721</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_3">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
-     <widget class="QLabel" name="IdGM_label">
-      <property name="text">
-       <string>IdGM</string>
-      </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QLabel" name="IdGM_label">
+        <property name="text">
+         <string>IdGM</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QLineEdit" name="IdGM_lineEdit">
+          <property name="styleSheet">
+           <string notr="true">    border-radius: 10px; /* Adjust the value to change the roundness */
+    padding: 5px; /* Adjust the padding as needed */
+    border: 1px solid #555555; /* Optional: add a border */</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>NomGM</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QLineEdit" name="name_lineEdit">
+          <property name="styleSheet">
+           <string notr="true">    border-radius: 10px; /* Adjust the value to change the roundness */
+    padding: 5px; /* Adjust the padding as needed */
+    border: 1px solid #555555; /* Optional: add a border */</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>CoefGM</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QDoubleSpinBox" name="coef_doubleSpinBox"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QPushButton" name="hide_pushButton">
+        <property name="text">
+         <string>Hide Matiere</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="matiere_pushButton">
+        <property name="text">
+         <string>Show Matiere</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <widget class="QTableView" name="matiere_tableView">
+        <attribute name="verticalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="add_pushButton">
+        <property name="text">
+         <string>Add Selected Matiere</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QTableView" name="gm_tableView">
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="IdGM_lineEdit"/>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>70</x>
-     <y>450</y>
-     <width>256</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_4">
-    <item>
-     <widget class="QPushButton" name="delete_pushButton">
-      <property name="text">
-       <string>delete</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="modify_pushButton">
-      <property name="text">
-       <string>update</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="clear_pushButton">
-      <property name="text">
-       <string>clear</string>
-      </property>
-     </widget>
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <widget class="QPushButton" name="delete_pushButton">
+        <property name="text">
+         <string>Delete</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="modify_pushButton">
+        <property name="text">
+         <string>Update</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="clear_pushButton">
+        <property name="text">
+         <string>Clear</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>IdGM_lineEdit</tabstop>
+  <tabstop>name_lineEdit</tabstop>
+  <tabstop>coef_doubleSpinBox</tabstop>
+  <tabstop>matiere_pushButton</tabstop>
+  <tabstop>hide_pushButton</tabstop>
+  <tabstop>gm_tableView</tabstop>
+  <tabstop>matiere_tableView</tabstop>
+  <tabstop>add_pushButton</tabstop>
+  <tabstop>delete_pushButton</tabstop>
+  <tabstop>modify_pushButton</tabstop>
+  <tabstop>clear_pushButton</tabstop>
+  <tabstop>LM_tableView</tabstop>
+  <tabstop>idMat_lineEdit</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

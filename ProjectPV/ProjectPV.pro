@@ -19,7 +19,6 @@ SOURCES += \
     main.cpp \
     mainwindow\mainwindow.cpp \
     matiere/matiere.cpp \
-    note/delegate.cpp \
     note/note.cpp \
     personne/personne.cpp \
     welcome/welcome.cpp
@@ -32,7 +31,6 @@ HEADERS += \
     groupemodule/groupemodule.h \
     mainwindow\mainwindow.h \
     matiere/matiere.h \
-    note/delegate.h \
     note/note.h \
     personne/personne.h \
     welcome/welcome.h

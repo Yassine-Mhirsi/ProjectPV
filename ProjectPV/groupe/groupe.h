@@ -20,6 +20,7 @@ public:
     groupe(string, string, string, string, int, vector<groupemodule*>*, vector<etudiant*>*);
     ~groupe();
     friend ostream& operator<<(std::ostream& os, const groupe& grp);
+    void customizeTableView();
     void PopulateGM();
     void PopulateEtu();
     void PopulateGRP();
@@ -32,6 +33,10 @@ public:
     void ToListGRP(const QModelIndex &index);
     void modifyGRP();
     void deleteGRP();
+    void showGM();
+    void showEtu();
+    void hideGM();
+    void hideEtu();
 private:
     string IdGRP;
     string Niveau;

@@ -19,14 +19,18 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    setWindowTitle("Student Mangement");
+    setWindowTitle("System Mangement");
     setWindowIcon(QIcon("E:/documents/cpp/QtProjectPV/p/ProjectPV/assets/iconpi.jpg"));
+    ui->etudiant_pushButton->setIcon(QIcon("E:/documents/cpp/QtProjectPV/p/ProjectPV/assets/student.svg"));
+    ui->ens_pushButton->setIcon(QIcon("E:/documents/cpp/QtProjectPV/p/ProjectPV/assets/teacher.svg"));
+    ui->matiere_pushButton->setIcon(QIcon("E:/documents/cpp/QtProjectPV/p/ProjectPV/assets/subject.svg"));
+    ui->gm_pushButton->setIcon(QIcon("E:/documents/cpp/QtProjectPV/p/ProjectPV/assets/groupemodule.svg"));
+    ui->grp_pushButton->setIcon(QIcon("E:/documents/cpp/QtProjectPV/p/ProjectPV/assets/groupe.svg"));
+    ui->note_pushButton->setIcon(QIcon("E:/documents/cpp/QtProjectPV/p/ProjectPV/assets/note.svg"));
     connect(ui->etudiant_pushButton,&QPushButton::clicked,this,&MainWindow::on_etudiant_pushButton_clicked);
-    connect(ui->pushButton,&QPushButton::clicked,this,&MainWindow::on_pushButton_clicked);
+    connect(ui->ens_pushButton,&QPushButton::clicked,this,&MainWindow::on_pushButton_clicked);
     connect(ui->matiere_pushButton,&QPushButton::clicked,this,&MainWindow::on_pushButton_2_clicked);
     connect(ui->gm_pushButton,&QPushButton::clicked,this,&MainWindow::on_gm_pushButton_clicked);
-
-
 
 }
 

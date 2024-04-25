@@ -19,16 +19,20 @@ public:
     ~groupemodule();
     friend ostream& operator<<(ostream& os, const groupemodule& gm);
     string getIdGM() const {return IdGM;}
+    void customizeTableView();
     void PopulateMatiere();
     void addGm();
     void displayselectedmat(const QModelIndex &index);
     void PopulateGM();
+    void clearLineEdits();
     void showMat();
+    void hideMat();
     void PopulateLM();
     void deleteGm();
     void displaySelectedGm(const QModelIndex &index);
     void ToListeMat(const QModelIndex &index);
     void modifyGm();
+    void MoyGm();
 private:
     string IdGM;
     string NomGM;

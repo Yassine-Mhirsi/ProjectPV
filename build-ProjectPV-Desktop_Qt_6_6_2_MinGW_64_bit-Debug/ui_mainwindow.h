@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
@@ -21,38 +22,83 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QPushButton *etudiant_pushButton;
-    QPushButton *pushButton;
-    QPushButton *matiere_pushButton;
-    QPushButton *gm_pushButton;
+    QWidget *gridLayoutWidget;
+    QGridLayout *gridLayout;
     QPushButton *grp_pushButton;
+    QPushButton *matiere_pushButton;
+    QPushButton *etudiant_pushButton;
     QPushButton *note_pushButton;
+    QPushButton *gm_pushButton;
+    QPushButton *ens_pushButton;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(835, 514);
+        MainWindow->resize(1023, 646);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
-        etudiant_pushButton = new QPushButton(centralwidget);
-        etudiant_pushButton->setObjectName("etudiant_pushButton");
-        etudiant_pushButton->setGeometry(QRect(100, 110, 83, 29));
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName("pushButton");
-        pushButton->setGeometry(QRect(220, 270, 80, 24));
-        matiere_pushButton = new QPushButton(centralwidget);
-        matiere_pushButton->setObjectName("matiere_pushButton");
-        matiere_pushButton->setGeometry(QRect(400, 210, 80, 24));
-        gm_pushButton = new QPushButton(centralwidget);
-        gm_pushButton->setObjectName("gm_pushButton");
-        gm_pushButton->setGeometry(QRect(430, 90, 101, 24));
-        grp_pushButton = new QPushButton(centralwidget);
+        gridLayoutWidget = new QWidget(centralwidget);
+        gridLayoutWidget->setObjectName("gridLayoutWidget");
+        gridLayoutWidget->setGeometry(QRect(10, 20, 1001, 611));
+        gridLayout = new QGridLayout(gridLayoutWidget);
+        gridLayout->setObjectName("gridLayout");
+        gridLayout->setHorizontalSpacing(7);
+        gridLayout->setContentsMargins(0, 0, 0, 0);
+        grp_pushButton = new QPushButton(gridLayoutWidget);
         grp_pushButton->setObjectName("grp_pushButton");
-        grp_pushButton->setGeometry(QRect(430, 330, 83, 29));
-        note_pushButton = new QPushButton(centralwidget);
+        QSizePolicy sizePolicy(QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(grp_pushButton->sizePolicy().hasHeightForWidth());
+        grp_pushButton->setSizePolicy(sizePolicy);
+        QFont font;
+        font.setPointSize(18);
+        grp_pushButton->setFont(font);
+
+        gridLayout->addWidget(grp_pushButton, 2, 1, 1, 1);
+
+        matiere_pushButton = new QPushButton(gridLayoutWidget);
+        matiere_pushButton->setObjectName("matiere_pushButton");
+        sizePolicy.setHeightForWidth(matiere_pushButton->sizePolicy().hasHeightForWidth());
+        matiere_pushButton->setSizePolicy(sizePolicy);
+        matiere_pushButton->setFont(font);
+
+        gridLayout->addWidget(matiere_pushButton, 1, 1, 1, 1);
+
+        etudiant_pushButton = new QPushButton(gridLayoutWidget);
+        etudiant_pushButton->setObjectName("etudiant_pushButton");
+        sizePolicy.setHeightForWidth(etudiant_pushButton->sizePolicy().hasHeightForWidth());
+        etudiant_pushButton->setSizePolicy(sizePolicy);
+        etudiant_pushButton->setFont(font);
+        etudiant_pushButton->setAutoDefault(false);
+
+        gridLayout->addWidget(etudiant_pushButton, 0, 1, 1, 1);
+
+        note_pushButton = new QPushButton(gridLayoutWidget);
         note_pushButton->setObjectName("note_pushButton");
-        note_pushButton->setGeometry(QRect(550, 260, 83, 29));
+        sizePolicy.setHeightForWidth(note_pushButton->sizePolicy().hasHeightForWidth());
+        note_pushButton->setSizePolicy(sizePolicy);
+        note_pushButton->setFont(font);
+
+        gridLayout->addWidget(note_pushButton, 2, 2, 1, 1);
+
+        gm_pushButton = new QPushButton(gridLayoutWidget);
+        gm_pushButton->setObjectName("gm_pushButton");
+        sizePolicy.setHeightForWidth(gm_pushButton->sizePolicy().hasHeightForWidth());
+        gm_pushButton->setSizePolicy(sizePolicy);
+        gm_pushButton->setFont(font);
+
+        gridLayout->addWidget(gm_pushButton, 1, 2, 1, 1);
+
+        ens_pushButton = new QPushButton(gridLayoutWidget);
+        ens_pushButton->setObjectName("ens_pushButton");
+        sizePolicy.setHeightForWidth(ens_pushButton->sizePolicy().hasHeightForWidth());
+        ens_pushButton->setSizePolicy(sizePolicy);
+        ens_pushButton->setFont(font);
+
+        gridLayout->addWidget(ens_pushButton, 0, 2, 1, 1);
+
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);
@@ -63,12 +109,12 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        etudiant_pushButton->setText(QCoreApplication::translate("MainWindow", "Students", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainWindow", "Prof", nullptr));
-        matiere_pushButton->setText(QCoreApplication::translate("MainWindow", "Matiere", nullptr));
-        gm_pushButton->setText(QCoreApplication::translate("MainWindow", "groupemodule", nullptr));
         grp_pushButton->setText(QCoreApplication::translate("MainWindow", "Groupe", nullptr));
+        matiere_pushButton->setText(QCoreApplication::translate("MainWindow", "Matiere", nullptr));
+        etudiant_pushButton->setText(QCoreApplication::translate("MainWindow", "Students", nullptr));
         note_pushButton->setText(QCoreApplication::translate("MainWindow", "Note", nullptr));
+        gm_pushButton->setText(QCoreApplication::translate("MainWindow", "groupemodule", nullptr));
+        ens_pushButton->setText(QCoreApplication::translate("MainWindow", "Prof", nullptr));
     } // retranslateUi
 
 };

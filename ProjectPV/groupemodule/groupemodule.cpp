@@ -8,17 +8,26 @@
 groupemodule::groupemodule(QWidget *parent)
     : QDialog(parent), ui(new Ui::groupemodule) {
     ui->setupUi(this);
+    setWindowTitle("Matiere Mangement");
+    setWindowIcon(QIcon("E:/documents/cpp/QtProjectPV/p/ProjectPV/assets/iconpi.jpg"));
+    ui->modify_pushButton->setIcon(QIcon("E:/documents/cpp/QtProjectPV/p/ProjectPV/assets/edit.svg"));
+    ui->delete_pushButton->setIcon(QIcon("E:/documents/cpp/QtProjectPV/p/ProjectPV/assets/delete.svg"));
+    ui->add_pushButton->setIcon(QIcon("E:/documents/cpp/QtProjectPV/p/ProjectPV/assets/save.svg"));
+    ui->clear_pushButton->setIcon(QIcon("E:/documents/cpp/QtProjectPV/p/ProjectPV/assets/clear.svg"));
     connect(ui->add_pushButton, &QPushButton::clicked, this, &groupemodule::addGm);
+    connect(ui->clear_pushButton, &QPushButton::clicked, this, &groupemodule::clearLineEdits);
     connect(ui->matiere_pushButton, &QPushButton::clicked, this, &groupemodule::showMat);
+    connect(ui->hide_pushButton, &QPushButton::clicked, this, &groupemodule::hideMat);
     connect(ui->matiere_tableView, &QTableView::clicked, this, &groupemodule::displayselectedmat);
     connect(ui->gm_tableView, &QTableView::clicked, this, &groupemodule::displaySelectedGm);
     connect(ui->delete_pushButton, &QPushButton::clicked, this, &groupemodule::deleteGm);
     connect(ui->modify_pushButton, &QPushButton::clicked, this, &groupemodule::modifyGm);
     connect(ui->gm_tableView, &QTableView::doubleClicked, this, &groupemodule::ToListeMat);
-
     PopulateMatiere();
     PopulateGM();
     PopulateLM();
+    customizeTableView();
+    ui->hide_pushButton->hide();
     ui->add_pushButton->hide();
     ui->matiere_tableView->hide();
     ui->idMat_lineEdit->hide();
@@ -28,7 +37,6 @@ groupemodule::groupemodule(QWidget *parent)
 groupemodule::~groupemodule() {delete ui;}
 
 groupemodule::groupemodule(string id, string nom, float coef, vector<matiere*>* matiere): IdGM(id), NomGM(nom), CoefGM(coef){ListeMat = *matiere;}
-
 
 ostream& operator<<(ostream& os, const groupemodule& gm) {
     os << "IdGM: " << gm.IdGM << "\n";
@@ -41,6 +49,20 @@ ostream& operator<<(ostream& os, const groupemodule& gm) {
     return os;
 }
 
+void groupemodule::customizeTableView() {
+    ui->matiere_tableView->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Fixed);
+    ui->matiere_tableView->horizontalHeader()->resizeSection(0, 40);
+
+    ui->matiere_tableView->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Fixed);
+    ui->matiere_tableView->horizontalHeader()->resizeSection(1, 250);
+
+    ui->matiere_tableView->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Fixed);
+    ui->matiere_tableView->horizontalHeader()->resizeSection(2, 30);
+
+    ui->matiere_tableView->horizontalHeader()->setSectionResizeMode(3, QHeaderView::Fixed);
+    ui->matiere_tableView->horizontalHeader()->resizeSection(3, 65);
+}
+
 void groupemodule::PopulateMatiere(){
     QSqlQueryModel *model = new QSqlQueryModel();
     model->setQuery("select * from Matiere");
@@ -48,9 +70,29 @@ void groupemodule::PopulateMatiere(){
     ui->matiere_tableView->setModel(model);
 }
 
+void groupemodule::clearLineEdits() {
+    // Clear the line edits
+    ui->IdGM_lineEdit->clear();
+    ui->name_lineEdit->clear();
+    ui->coef_doubleSpinBox->clear();
+    ui->idMat_lineEdit->clear();
+    hideMat();
+}
+
 void groupemodule::showMat(){
     ui->add_pushButton->show();
     ui->matiere_tableView->show();
+    // ui->gm_tableView->hide();
+    ui->matiere_pushButton->hide();
+    ui->hide_pushButton->show();
+}
+
+void groupemodule::hideMat(){
+    ui->add_pushButton->hide();
+    ui->matiere_tableView->hide();
+    // ui->gm_tableView->show();
+    ui->matiere_pushButton->show();
+    ui->hide_pushButton->hide();
 }
 
 void groupemodule::PopulateGM(){
@@ -84,7 +126,8 @@ void groupemodule::addGm(){
     if (!createGMQuery.exec("CREATE TABLE IF NOT EXISTS GroupeModule ("
                             "IdGm TEXT PRIMARY KEY,"
                             "NomGm TEXT NOT NULL,"
-                            "CoefGm REAL)")) { // Added closing parenthesis for the CREATE TABLE statement
+                            "CoefGm REAL)")) {
+                            // "MoyGM REAL)")) { // Added closing parenthesis for the CREATE TABLE statement
         qDebug() << "Error creating table:" << createGMQuery.lastError().text();
         return;
     } else {
@@ -184,11 +227,6 @@ void groupemodule::displaySelectedGm(const QModelIndex &index) {
     ui->name_lineEdit->setText(nomGm);
     ui->coef_doubleSpinBox->setValue(coefGm);
 
-    // Show the modify button
-    // ui->modify_pushButton->show();
-    // ui->delete_pushButton->show();
-    // ui->id_label->show();
-    // ui->id_lineEdit->show();
 }
 
 
@@ -375,5 +413,22 @@ void groupemodule::modifyGm() {
     // ui->id_lineEdit->hide();
 }
 
+// void groupemodule::MoyGm() {
+//     QSqlQuery updateQuery;
+//     updateQuery.prepare("UPDATE GroupeModule SET MoyGM = ("
+//                         "SELECT SUM(N.MoyMat * M.Coef) / SUM(M.Coef) "
+//                         "FROM Matiere AS M "
+//                         "INNER JOIN Note AS N ON M.IdMat = N.Mat "
+//                         "INNER JOIN Liste_Matiere AS LM ON M.IdMat = LM.IdMat "
+//                         "WHERE LM.IdGm = GroupeModule.IdGm)");
+
+//     // Execute the update query
+//     if (!updateQuery.exec()) {
+//         // If an error occurs while executing the query, print an error message
+//         qDebug() << "Error updating average MoyGM for all groups of subjects:" << updateQuery.lastError().text();
+//     } else {
+//         qDebug() << "Average MoyGM updated successfully for all groups of subjects";
+//     }
+// }
 
 
